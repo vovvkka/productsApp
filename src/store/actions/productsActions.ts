@@ -22,6 +22,7 @@ export const fetchProducts = () => {
                 price: item.price,
                 image: item.image,
                 description: item.description,
+                isLiked: false,
             }));
 
             dispatch(fetchProductsSuccess(products));
