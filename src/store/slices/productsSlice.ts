@@ -24,7 +24,6 @@ const productsSlice = createSlice({
             state.error = null;
         },
         fetchProductsSuccess(state, action: PayloadAction<Product[]>) {
-            console.log(action.payload);
             state.products = action.payload;
             state.loading = false;
         },

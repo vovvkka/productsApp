@@ -14,9 +14,17 @@ export const fetchProducts = () => {
         try {
             dispatch(fetchProductsRequest());
 
-            const response = await axios.get<Product[]>('/api/products');
+            const response = await axios.get<Product[]>('https://fakestoreapi.com/products');
 
-            dispatch(fetchProductsSuccess({products: response.data}));
+            const products = response.data.map(item => ({
+                id: item.id,
+                title: item.title,
+                price: item.price,
+                image: item.image,
+                description: item.description,
+            }));
+
+            dispatch(fetchProductsSuccess(products));
         } catch (e) {
             const errorMessage = (e as Error).message || 'Что то пошло не так...';
             dispatch(fetchProductsFailure(errorMessage));
