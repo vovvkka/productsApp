@@ -31,20 +31,4 @@
       font-size: 18px;
     }
   }
-
-  &-search {
-    border: none;
-    border-bottom: 3px solid #7a7a7a;
-    padding: 8px 12px;
-    border-radius: 20px;
-    width: 300px;
-
-    &:focus {
-      border-bottom: 1px solid #d1d1d1;
-    }
-
-    &-focused {
-      border-bottom: 1px solid #d1d1d1;
-    }
-  }
 }

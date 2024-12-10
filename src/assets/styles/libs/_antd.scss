@@ -1,0 +1,42 @@
+
+.ant-btn {
+  background-color: #f78fb3;
+  border-color: #f78fb3;
+  color: white;
+
+  &:hover {
+    background-color: #ff6b81 !important;
+    border-color: #ff6b81 !important;
+    color: white !important;
+  }
+}
+
+.ant-slider-track {
+  background-color: #c56cf0;
+}
+
+.ant-slider-handle {
+  border-color: #f8a5c2;
+
+  &:hover {
+    border-color: #ff6b81;
+  }
+}
+
+.ant-switch-checked {
+  background-color: #f78fb3;
+}
+
+.ant-slider {
+  .ant-slider-track {
+    background-color: #c56cf0;
+  }
+
+  .ant-slider-handle {
+    border-color: #c56cf0;
+
+    &:hover {
+      border-color: #8e44ad;
+    }
+  }
+}

@@ -31,6 +31,13 @@ const productsSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
+        likeProduct(state, action: PayloadAction<string>) {
+            const product = state.products.find(p => p.id === action.payload);
+
+            if (product) {
+                product.isLiked = !product.isLiked;
+            }
+        },
         deleteProduct(state, action: PayloadAction<string>) {
             state.products = state.products.filter((product) => product.id !== action.payload);
         }
@@ -41,7 +48,8 @@ export const {
     fetchProductsRequest,
     fetchProductsSuccess,
     fetchProductsFailure,
-    deleteProduct
+    deleteProduct,
+    likeProduct,
 } = productsSlice.actions;
 
 export default productsSlice;

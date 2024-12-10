@@ -5,7 +5,7 @@ import {DeleteFilled, HeartFilled, HeartOutlined} from "@ant-design/icons";
 import {NavLink} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {AppDispatch} from "../store/configureStore.ts";
-import {deleteProduct} from "../store/slices/productsSlice.ts";
+import {deleteProduct, likeProduct} from "../store/slices/productsSlice.ts";
 
 const {Meta} = Card;
 
@@ -20,17 +20,23 @@ interface ProductCardProps {
 const ProductCard = ({product}: ProductCardProps): React.ReactElement => {
     const dispatch = useDispatch<AppDispatch>();
 
-    const click:React.MouseEventHandler<HTMLSpanElement> = (e) => {
+    const handlerDelete: React.MouseEventHandler<HTMLSpanElement> = (e) => {
         e.preventDefault();
         dispatch(deleteProduct(product.id));
-    }
+    };
+
+    const handlerLike: React.MouseEventHandler<HTMLSpanElement> = (e) => {
+        e.preventDefault();
+        dispatch(likeProduct(product.id));
+    };
 
     return (
         <Col xs={24} sm={12} md={8} lg={6}>
             <div className="product-card">
-                <NavLink to={`/product/${product.id}`}>
+                <NavLink to={`/products/${product.id}`}>
                     <Card
-                        style={{width: "100%", cursor: "text"}}
+                        hoverable
+                        style={{width: "100%"}}
                         cover={<img alt="example" style={{height: 300}} src={product.image}/>}
                     >
                         <Meta
@@ -41,9 +47,13 @@ const ProductCard = ({product}: ProductCardProps): React.ReactElement => {
                         <div className="product-card__info">
                             <p className="product-card__price">$ {product.price}</p>
                             <div>
-                                {product.isLiked ? <HeartFilled className="heart-icon"/> :
-                                    <HeartOutlined className="heart-icon"/>}
-                                <DeleteFilled className="delete-icon" onClick={e => click(e)}/>
+                                {
+                                    product.isLiked ?
+                                        <HeartFilled className="heart-icon" onClick={handlerLike}/> :
+                                        <HeartOutlined className="heart-icon heart-icon-outlined" onClick={handlerLike}/>
+                                }
+
+                                <DeleteFilled className="delete-icon" onClick={handlerDelete}/>
                             </div>
                         </div>
                     </Card>

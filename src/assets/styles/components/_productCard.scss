@@ -17,12 +17,26 @@
 .heart-icon {
   color: red;
   font-size: 25px;
-  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+
+  &-outlined {
+    color: grey;
+  }
+
+  &:hover {
+    color: red;
+    transform: scale(1.2);
+  }
 }
 
 .delete-icon {
-  color: red;
+  color: grey;
   font-size: 25px;
-  cursor: pointer;
   margin-left: 5px;
+  transition: color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    color: red;
+    transform: scale(1.2);
+  }
 }

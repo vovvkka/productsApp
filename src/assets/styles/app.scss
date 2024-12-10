@@ -1,6 +1,7 @@
 @use 'components/all';
 @use 'variables';
 @use 'libs/normalize';
+@use 'libs/antd';
 
 * {
     -webkit-tap-highlight-color: transparent;
@@ -16,8 +17,7 @@ main {
 }
 
 .wrapper {
-    background: rgb(255,107,252);
-    background: linear-gradient(90deg, rgba(255,107,252,0.3) 0%, rgba(255,98,0,0.2) 100%);
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4 60%, #fbc2eb);
 }
 
 .container {
@@ -31,16 +31,16 @@ main {
 }
 
 ::-webkit-scrollbar-track {
-    background: #737373;
+    background: #b6b6b6;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #383838;
+    background: #ff9fc1;
     transition: all 10s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #2a2a2a;
+    background: #a6a6a6;
 }
 
 input:-webkit-autofill,
@@ -50,4 +50,28 @@ input:-webkit-autofill:active {
     box-shadow: 0 0 0 30px #ffffff inset !important;
 }
 
-.flex-between {display: flex; justify-content: space-between; align-items: center;}
+.search-input {
+    margin-right: 10px;
+    width: 300px;
+    border-radius: 8px;
+    border: 1px solid #f78fb3; // Теплый розовый цвет рамки
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    .ant-input {
+        color: #6c5ce7; // Текст фиолетовый
+    }
+
+    .ant-input-prefix {
+        color: #c56cf0; // Цвет иконки
+    }
+
+    &:hover {
+        border-color: #ff6b81; // Цвет рамки при ховере
+        box-shadow: 0 0 8px rgba(255, 107, 129, 0.5); // Теплый светящийся эффект
+    }
+
+    &:focus-within {
+        border-color: #8e44ad; // Цвет рамки при фокусе
+        box-shadow: 0 0 8px rgba(142, 68, 173, 0.5); // Фокус на поисковом поле
+    }
+}

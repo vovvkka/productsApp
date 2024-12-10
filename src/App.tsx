@@ -2,7 +2,7 @@
 
 import {useEffect} from "react";
 import {Route, Routes, useLocation, useNavigate} from "react-router-dom";
-import Products from "./pages/Products.tsx";
+import ProductsPage from "./pages/ProductsPage.tsx";
 import SingleProduct from "./pages/SingleProduct.tsx";
 import Header from "./components/Header.tsx";
 
@@ -23,7 +23,7 @@ const App = () => {
                 <main>
                     <Routes>
                         <Route path="/" element={<></>}/>
-                        <Route path="/products" element={<Products/>}/>
+                        <Route path="/products" element={<ProductsPage/>}/>
                         <Route path="/products/:id" element={<SingleProduct/>}/>
                     </Routes>
                 </main>
