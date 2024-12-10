@@ -5,6 +5,7 @@ import { Button, Input, Row, Slider } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import ProductCard from "../components/ProductCard.tsx";
 import { filterProducts } from "../utils/filterProducts.ts";
+import Loader from "../components/Loader.tsx";
 
 const ProductsPage: React.FC = () => {
     const allProducts = useSelector((state: RootState) => state.products.products);
@@ -12,6 +13,7 @@ const ProductsPage: React.FC = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [onlyFavorites, setOnlyFavorites] = useState(false);
     const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
+    const loading = useSelector((state: RootState) => state.products.loading)
 
     useEffect(() => {
         setFilteredProducts(allProducts);
@@ -37,6 +39,8 @@ const ProductsPage: React.FC = () => {
         const filtered = filterProducts(allProducts, query, favoritesOnly, price);
         setFilteredProducts(filtered);
     };
+
+    if (loading) return <Loader />;
 
     return (
         <>

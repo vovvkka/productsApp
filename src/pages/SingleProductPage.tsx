@@ -14,7 +14,9 @@ const SingleProductPage: React.FC = () => {
         state.products.products.find((prod) => prod.id.toString() === id?.toString())
     );
 
-    return product ? (
+    if (!product) return <h3>Продукт не найден.</h3>
+
+    return (
         <div className="singleProduct">
             <Button
                 onClick={() => navigate("/products")}
@@ -53,7 +55,7 @@ const SingleProductPage: React.FC = () => {
                 </Card>
             </div>
         </div>
-    ) : <h3>Продукт не найден.</h3>;
+    );
 };
 
 export default SingleProductPage;
