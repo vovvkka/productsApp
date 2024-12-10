@@ -2,8 +2,8 @@
 
 import {useEffect} from "react";
 import {Route, Routes, useLocation, useNavigate} from "react-router-dom";
-import Products from "./containers/Products.tsx";
-import SingleProduct from "./containers/SingleProduct.tsx";
+import Products from "./pages/Products.tsx";
+import SingleProduct from "./pages/SingleProduct.tsx";
 import Header from "./components/Header.tsx";
 
 const App = () => {
@@ -17,18 +17,18 @@ const App = () => {
     }, [location.pathname, navigate]);
 
     return (
-        <>
-            <Header/>
-            <main>
-                <div className="container">
+        <div className="wrapper">
+            <div className="container">
+                <Header/>
+                <main>
                     <Routes>
                         <Route path="/" element={<></>}/>
                         <Route path="/products" element={<Products/>}/>
                         <Route path="/products/:id" element={<SingleProduct/>}/>
                     </Routes>
-                </div>
-            </main>
-        </>
+                </main>
+            </div>
+        </div>
 
     );
 };

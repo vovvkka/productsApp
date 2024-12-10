@@ -6,18 +6,16 @@ import {SearchOutlined} from "@ant-design/icons";
 const Header = () => {
     return (
         <div className="header">
-            <div className="container">
-                <div className="header-list">
-                    <NavLink to="/products" className="header-logo">ProductsApp</NavLink>
+            <div className="header-list">
+                <NavLink to="/products" className="header-logo">Products <span>App</span></NavLink>
 
-                    <Input
-                        placeholder=""
-                        prefix={<SearchOutlined/>}
-                        className="header-search"
-                    />
+                <Input
+                    placeholder=""
+                    prefix={<SearchOutlined/>}
+                    className="header-search"
+                />
 
-                    <div></div>
-                </div>
+                <div></div>
             </div>
         </div>
     );

@@ -1,0 +1,28 @@
+.product-card {
+  &__info {
+    border-top: 1px solid #a1a1a1;
+    margin-top: 15px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__price {
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
+
+.heart-icon {
+  color: red;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.delete-icon {
+  color: red;
+  font-size: 25px;
+  cursor: pointer;
+  margin-left: 5px;
+}

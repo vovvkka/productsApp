@@ -1,11 +1,13 @@
 .header {
-  padding: 20px 0;
+  padding: 20px 30px;
   width: 100%;
+  border-bottom: 1px solid #b3b3b3;
+
+  background: #fff;
 
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 400;
   font-style: normal;
-  border-bottom: 1px solid #6e6e6e;
 
   &-list {
     display: flex;
@@ -19,6 +21,15 @@
     user-select: none;
     color: #2c3e50;
     letter-spacing: 1px;
+    position: relative;
+
+    span {
+      position: absolute;
+      bottom: -5px;
+      right: -40px;
+      color: #d69486;
+      font-size: 18px;
+    }
   }
 
   &-search {

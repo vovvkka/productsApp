@@ -1,38 +1,26 @@
-@use './components/all';
-@use './variables';
-@use './libs/normalize';
+@use 'components/all';
+@use 'variables';
+@use 'libs/normalize';
 
 * {
     -webkit-tap-highlight-color: transparent;
     scroll-behavior: smooth;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-style: normal;
 }
 
 main {
-    margin-top: 30px;
-    padding: 0 150px;
+    padding: 30px 30px 0 30px;
     background: #fff;
+    min-height: 100vh;
+}
+
+.wrapper {
+    background: rgb(255,107,252);
+    background: linear-gradient(90deg, rgba(255,107,252,0.3) 0%, rgba(255,98,0,0.2) 100%);
 }
 
 .container {
-    margin: 0 auto;
-    padding: 0 15px;
-    max-width: 1500px;
-}
-
-.container-lg {
-  margin: 0 auto;
-  padding: 0 15px;
-  max-width: 1700px;
-}
-
-.container-sm {
-    margin: 0 auto;
-    padding: 0 15px;
-    max-width: 1400px;
-}
-
-.container-xs {
     margin: 0 auto;
     padding: 0 15px;
     max-width: 1250px;
@@ -61,3 +49,5 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     box-shadow: 0 0 0 30px #ffffff inset !important;
 }
+
+.flex-between {display: flex; justify-content: space-between; align-items: center;}
