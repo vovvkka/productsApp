@@ -1,8 +1,8 @@
 import React from 'react';
 import {Card, Col} from "antd";
 import {Product} from "../types/Product.ts";
-import {DeleteFilled, HeartFilled, HeartOutlined} from "@ant-design/icons";
-import {NavLink} from "react-router-dom";
+import {DeleteFilled, EditFilled, HeartFilled, HeartOutlined} from "@ant-design/icons";
+import {NavLink, useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {AppDispatch} from "../store/configureStore.ts";
 import {deleteProduct, likeProduct} from "../store/slices/productsSlice.ts";
@@ -19,11 +19,17 @@ interface ProductCardProps {
 
 const ProductCard = ({product}: ProductCardProps): React.ReactElement => {
     const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
 
     const handlerDelete: React.MouseEventHandler<HTMLSpanElement> = (e) => {
         e.preventDefault();
         dispatch(deleteProduct(product.id));
     };
+
+    const handlerNavigate: React.MouseEventHandler<HTMLSpanElement> = (e) => {
+        e.preventDefault();
+        navigate(`/edit-product/${product.id}`);
+    }
 
     const handlerLike: React.MouseEventHandler<HTMLSpanElement> = (e) => {
         e.preventDefault();
@@ -41,17 +47,21 @@ const ProductCard = ({product}: ProductCardProps): React.ReactElement => {
                     >
                         <Meta
                             title={product.title}
-                            description={<div className="product-card__description">{truncateText(product.description, 40)}</div>}
+                            description={<div
+                                className="product-card__description">{truncateText(product.description, 40)}</div>}
                         />
 
                         <div className="product-card__info">
-                        <p className="product-card__price">$ {product.price}</p>
+                            <p className="product-card__price">$ {product.price}</p>
                             <div>
                                 {
                                     product.isLiked ?
                                         <HeartFilled className="heart-icon" onClick={handlerLike}/> :
-                                        <HeartOutlined className="heart-icon heart-icon-outlined" onClick={handlerLike}/>
+                                        <HeartOutlined className="heart-icon heart-icon-outlined"
+                                                       onClick={handlerLike}/>
                                 }
+
+                                <EditFilled className="edit-icon" onClick={handlerNavigate}/>
 
                                 <DeleteFilled className="delete-icon" onClick={handlerDelete}/>
                             </div>

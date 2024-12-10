@@ -34,6 +34,17 @@
   }
 }
 
+.edit-icon {
+  color: grey;
+  font-size: 25px;
+  margin-left: 5px;
+
+  &:hover {
+    color: #286020;
+    transform: scale(1.2);
+  }
+}
+
 .delete-icon {
   color: grey;
   font-size: 25px;

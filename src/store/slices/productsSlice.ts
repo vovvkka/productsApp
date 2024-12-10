@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {Product} from "../../types/Product.ts";
 
 interface ProductsState {
@@ -48,6 +48,9 @@ const productsSlice = createSlice({
         createProduct(state, action: PayloadAction<Product>) {
             state.products = [...state.products, action.payload];
         },
+        updateProduct(state, action: PayloadAction<Product>) {
+            state.products[parseInt(action.payload.id) - 1] = action.payload;
+        },
         deleteProduct(state, action: PayloadAction<string>) {
             state.products = state.products.filter((product) => product.id !== action.payload);
         }
@@ -60,6 +63,7 @@ export const {
     fetchProductsFailure,
     selectProduct,
     createProduct,
+    updateProduct,
     deleteProduct,
     likeProduct,
 } = productsSlice.actions;

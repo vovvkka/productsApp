@@ -1,4 +1,4 @@
-.create-product {
+.productForm {
   &__title {
     text-align: center;
     margin-bottom: 20px;
@@ -9,7 +9,7 @@
     margin: 0 auto;
   }
 
-  &__price-input {
+  &__price {
     width: 100%;
   }
 

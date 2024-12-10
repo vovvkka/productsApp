@@ -9,6 +9,7 @@ import CreateProductPage from "./pages/CreateProductPage.tsx";
 import {fetchProducts} from "./store/actions/productsActions.ts";
 import {useDispatch} from "react-redux";
 import {AppDispatch} from "./store/configureStore.ts";
+import EditProductPage from "./pages/EditProductPage.tsx";
 
 const App = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -34,6 +35,7 @@ const App = () => {
                         <Route path="/" element={<></>}/>
                         <Route path="/products" element={<ProductsPage/>}/>
                         <Route path="/products/:id" element={<SingleProductPage/>}/>
+                        <Route path="/edit-product/:id" element={<EditProductPage/>}/>
                         <Route path="/create-product" element={<CreateProductPage/>}/>
                     </Routes>
                 </main>

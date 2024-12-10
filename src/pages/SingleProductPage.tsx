@@ -1,22 +1,18 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {useParams, useNavigate} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {AppDispatch, RootState} from "../store/configureStore.ts";
+import {useSelector} from "react-redux";
+import {RootState} from "../store/configureStore.ts";
 import {Card, Typography, Button, Row, Col} from "antd";
-import {selectProduct} from "../store/slices/productsSlice.ts";
 
 const {Title, Text} = Typography;
 
 const SingleProductPage: React.FC = () => {
     const {id} = useParams<{ id: string }>();
     const navigate = useNavigate();
-    const dispatch = useDispatch<AppDispatch>();
-    const products = useSelector((state: RootState) => state.products.products);
-    const product = useSelector((state: RootState) => state.products.product);
 
-    useEffect(() => {
-        if (id && products) dispatch(selectProduct(id));
-    }, [id, dispatch, products]);
+    const product = useSelector((state: RootState) =>
+        state.products.products.find((prod) => prod.id.toString() === id?.toString())
+    );
 
     return product ? (
         <div className="singleProduct">
