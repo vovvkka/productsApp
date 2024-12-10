@@ -32,7 +32,7 @@ const App = () => {
                 <Header/>
                 <main>
                     <Routes>
-                        <Route path="/" element={<></>}/>
+                        <Route path="/" element={<>Redirect to Products Page...</>}/>
                         <Route path="/products" element={<ProductsPage/>}/>
                         <Route path="/products/:id" element={<SingleProductPage/>}/>
                         <Route path="/edit-product/:id" element={<EditProductPage/>}/>
