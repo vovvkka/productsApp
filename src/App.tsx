@@ -3,7 +3,7 @@
 import {useEffect} from "react";
 import {Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import ProductsPage from "./pages/ProductsPage.tsx";
-import SingleProduct from "./pages/SingleProduct.tsx";
+import SingleProductPage from "./pages/SingleProductPage.tsx";
 import Header from "./components/Header.tsx";
 
 const App = () => {
@@ -24,7 +24,7 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<></>}/>
                         <Route path="/products" element={<ProductsPage/>}/>
-                        <Route path="/products/:id" element={<SingleProduct/>}/>
+                        <Route path="/products/:id" element={<SingleProductPage/>}/>
                     </Routes>
                 </main>
             </div>

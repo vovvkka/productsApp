@@ -3,6 +3,7 @@ import {Product} from "../../types/Product.ts";
 
 interface ProductsState {
     products: Product[];
+    product: Product | null;
     loading: boolean;
     error: string | null;
 }
@@ -11,6 +12,7 @@ const name = 'products';
 
 export const initialState: ProductsState = {
     products: [],
+    product: null,
     loading: false,
     error: null,
 };
@@ -31,6 +33,18 @@ const productsSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
+        fetchOneProductRequest(state) {
+            state.loading = true;
+            state.error = null;
+        },
+        fetchOneProductSuccess(state, action: PayloadAction<Product>) {
+            state.product = action.payload;
+            state.loading = false;
+        },
+        fetchOneProductFailure(state, action: PayloadAction<string>) {
+            state.loading = false;
+            state.error = action.payload;
+        },
         likeProduct(state, action: PayloadAction<string>) {
             const product = state.products.find(p => p.id === action.payload);
 
@@ -48,6 +62,9 @@ export const {
     fetchProductsRequest,
     fetchProductsSuccess,
     fetchProductsFailure,
+    fetchOneProductRequest,
+    fetchOneProductSuccess,
+    fetchOneProductFailure,
     deleteProduct,
     likeProduct,
 } = productsSlice.actions;
