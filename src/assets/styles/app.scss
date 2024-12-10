@@ -54,24 +54,24 @@ input:-webkit-autofill:active {
     margin-right: 10px;
     width: 300px;
     border-radius: 8px;
-    border: 1px solid #f78fb3; // Теплый розовый цвет рамки
+    border: 1px solid #f78fb3;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
     .ant-input {
-        color: #6c5ce7; // Текст фиолетовый
+        color: #6c5ce7;
     }
 
     .ant-input-prefix {
-        color: #c56cf0; // Цвет иконки
+        color: #c56cf0;
     }
 
     &:hover {
-        border-color: #ff6b81; // Цвет рамки при ховере
-        box-shadow: 0 0 8px rgba(255, 107, 129, 0.5); // Теплый светящийся эффект
+        border-color: #ff6b81;
+        box-shadow: 0 0 8px rgba(255, 107, 129, 0.5);
     }
 
     &:focus-within {
-        border-color: #8e44ad; // Цвет рамки при фокусе
-        box-shadow: 0 0 8px rgba(142, 68, 173, 0.5); // Фокус на поисковом поле
+        border-color: #8e44ad;
+        box-shadow: 0 0 8px rgba(142, 68, 173, 0.5);
     }
 }

@@ -1,3 +1,4 @@
+// src/pages/ProductsPage.tsx
 import React, { useEffect, useState } from "react";
 import { fetchProducts } from "../store/actions/productsActions.ts";
 import { useDispatch, useSelector } from "react-redux";
@@ -5,6 +6,7 @@ import { AppDispatch, RootState } from "../store/configureStore.ts";
 import { Button, Input, Row, Slider } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import ProductCard from "../components/ProductCard.tsx";
+import { filterProducts } from "../utils/filterProducts.ts";
 
 const ProductsPage: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -25,31 +27,21 @@ const ProductsPage: React.FC = () => {
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const query = e.target.value.toLowerCase();
         setSearchQuery(query);
-        filterProducts(query, onlyFavorites, priceRange);
+        handleFilter(query, onlyFavorites, priceRange);
     };
 
     const handleFavoritesToggle = () => {
         setOnlyFavorites(!onlyFavorites);
-        filterProducts(searchQuery, !onlyFavorites, priceRange);
+        handleFilter(searchQuery, !onlyFavorites, priceRange);
     };
 
     const handlePriceRangeChange = (range: [number, number]) => {
         setPriceRange(range);
-        filterProducts(searchQuery, onlyFavorites, range);
+        handleFilter(searchQuery, onlyFavorites, range);
     };
 
-    const filterProducts = (
-        query: string,
-        favoritesOnly: boolean,
-        price: [number, number]
-    ) => {
-        const filtered = allProducts.filter((product) => {
-            const matchesQuery = product.title.toLowerCase().includes(query);
-            const matchesFavorites = favoritesOnly ? product.isLiked : true;
-            const matchesPrice =
-                product.price >= price[0] && product.price <= price[1];
-            return matchesQuery && matchesFavorites && matchesPrice;
-        });
+    const handleFilter = (query: string, favoritesOnly: boolean, price: [number, number]) => {
+        const filtered = filterProducts(allProducts, query, favoritesOnly, price);
         setFilteredProducts(filtered);
     };
 
