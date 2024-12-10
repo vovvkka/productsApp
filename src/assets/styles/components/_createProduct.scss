@@ -1,0 +1,22 @@
+.create-product {
+  &__title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  &__form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  &__price-input {
+    width: 100%;
+  }
+
+  &__textarea {
+    height: 400px !important;
+    resize: none !important;
+    margin-bottom: 0;
+    padding-bottom: 55px;
+  }
+}

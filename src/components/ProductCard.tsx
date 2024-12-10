@@ -41,11 +41,11 @@ const ProductCard = ({product}: ProductCardProps): React.ReactElement => {
                     >
                         <Meta
                             title={product.title}
-                            description={truncateText(product.description, 40)}
+                            description={<div className="product-card__description">{truncateText(product.description, 40)}</div>}
                         />
 
                         <div className="product-card__info">
-                            <p className="product-card__price">$ {product.price}</p>
+                        <p className="product-card__price">$ {product.price}</p>
                             <div>
                                 {
                                     product.isLiked ?

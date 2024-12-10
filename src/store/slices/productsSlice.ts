@@ -33,17 +33,10 @@ const productsSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
-        fetchOneProductRequest(state) {
-            state.loading = true;
-            state.error = null;
-        },
-        fetchOneProductSuccess(state, action: PayloadAction<Product>) {
-            state.product = action.payload;
-            state.loading = false;
-        },
-        fetchOneProductFailure(state, action: PayloadAction<string>) {
-            state.loading = false;
-            state.error = action.payload;
+        selectProduct(state, action: PayloadAction<string>) {
+            const product = state.products.find(p => p.id == action.payload.toString());
+
+            if (product) state.product = product;
         },
         likeProduct(state, action: PayloadAction<string>) {
             const product = state.products.find(p => p.id === action.payload);
@@ -51,6 +44,9 @@ const productsSlice = createSlice({
             if (product) {
                 product.isLiked = !product.isLiked;
             }
+        },
+        createProduct(state, action: PayloadAction<Product>) {
+            state.products = [...state.products, action.payload];
         },
         deleteProduct(state, action: PayloadAction<string>) {
             state.products = state.products.filter((product) => product.id !== action.payload);
@@ -62,9 +58,8 @@ export const {
     fetchProductsRequest,
     fetchProductsSuccess,
     fetchProductsFailure,
-    fetchOneProductRequest,
-    fetchOneProductSuccess,
-    fetchOneProductFailure,
+    selectProduct,
+    createProduct,
     deleteProduct,
     likeProduct,
 } = productsSlice.actions;

@@ -8,6 +8,11 @@
     align-items: center;
   }
 
+  &__description {
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
   &__price {
     font-size: 15px;
     font-weight: 600;

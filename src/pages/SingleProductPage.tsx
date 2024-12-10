@@ -1,9 +1,9 @@
 import React, {useEffect} from "react";
 import {useParams, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchOneProduct} from "../store/actions/productsActions.ts";
 import {AppDispatch, RootState} from "../store/configureStore.ts";
 import {Card, Typography, Button, Row, Col} from "antd";
+import {selectProduct} from "../store/slices/productsSlice.ts";
 
 const {Title, Text} = Typography;
 
@@ -11,20 +11,14 @@ const SingleProductPage: React.FC = () => {
     const {id} = useParams<{ id: string }>();
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
+    const products = useSelector((state: RootState) => state.products.products);
     const product = useSelector((state: RootState) => state.products.product);
 
     useEffect(() => {
-        if (id) {
-            dispatch(fetchOneProduct(id));
-        }
-    }, [id, dispatch]);
+        if (id && products) dispatch(selectProduct(id));
+    }, [id, dispatch, products]);
 
-
-    if (!product) {
-        return <div>Продукт не найден.</div>;
-    }
-
-    return (
+    return product ? (
         <div className="singleProduct">
             <Button
                 onClick={() => navigate("/products")}
@@ -63,7 +57,7 @@ const SingleProductPage: React.FC = () => {
                 </Card>
             </div>
         </div>
-    );
+    ) : <h3>Продукт не найден.</h3>;
 };
 
 export default SingleProductPage;

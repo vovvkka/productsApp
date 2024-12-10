@@ -1,24 +1,17 @@
-// src/pages/ProductsPage.tsx
 import React, { useEffect, useState } from "react";
-import { fetchProducts } from "../store/actions/productsActions.ts";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../store/configureStore.ts";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/configureStore.ts";
 import { Button, Input, Row, Slider } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import ProductCard from "../components/ProductCard.tsx";
 import { filterProducts } from "../utils/filterProducts.ts";
 
 const ProductsPage: React.FC = () => {
-    const dispatch = useDispatch<AppDispatch>();
     const allProducts = useSelector((state: RootState) => state.products.products);
     const [filteredProducts, setFilteredProducts] = useState(allProducts);
     const [searchQuery, setSearchQuery] = useState("");
     const [onlyFavorites, setOnlyFavorites] = useState(false);
     const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
-
-    useEffect(() => {
-        dispatch(fetchProducts());
-    }, [dispatch]);
 
     useEffect(() => {
         setFilteredProducts(allProducts);

@@ -1,6 +1,4 @@
 import {
-    fetchOneProductFailure,
-    fetchOneProductRequest, fetchOneProductSuccess,
     fetchProductsFailure,
     fetchProductsRequest,
     fetchProductsSuccess,
@@ -31,31 +29,6 @@ export const fetchProducts = () => {
         } catch (e) {
             const errorMessage = (e as Error).message || 'Что то пошло не так...';
             dispatch(fetchProductsFailure(errorMessage));
-        }
-    };
-};
-
-
-export const fetchOneProduct = (id: string) => {
-    return async (dispatch: AppDispatch) => {
-        try {
-            dispatch(fetchOneProductRequest());
-
-            const response = await axios.get<Product>(`https://fakestoreapi.com/products/${id}`);
-
-            const product:Product = {
-                id: response.data.id,
-                title: response.data.title,
-                description: response.data.description,
-                image: response.data.image,
-                price: response.data.price,
-                isLiked: false
-            }
-
-            dispatch(fetchOneProductSuccess(product));
-        } catch (e) {
-            const errorMessage = (e as Error).message || 'Что то пошло не так...';
-            dispatch(fetchOneProductFailure(errorMessage));
         }
     };
 };
